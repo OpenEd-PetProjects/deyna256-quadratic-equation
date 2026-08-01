@@ -26,5 +26,12 @@ class TestTwoRoots(unittest.TestCase):
                 self.assertEqual(sorted((x1, x2)), sorted(expected))
 
 
+class TestOneRoot(unittest.TestCase):
+    def test_one_root(self):
+        for a, b, c, expected in [(1, -4, 4, 2.0), (4, -4, 1, 0.5), (1, 0, 0, 0.0)]:
+            with self.subTest(a=a, b=b, c=c):
+                self.assertEqual(solve(a, b, c), ("one", expected))
+
+
 if __name__ == "__main__":
     unittest.main()
