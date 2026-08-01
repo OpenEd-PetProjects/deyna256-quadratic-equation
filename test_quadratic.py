@@ -33,5 +33,12 @@ class TestOneRoot(unittest.TestCase):
                 self.assertEqual(solve(a, b, c), ("one", expected))
 
 
+class TestNoRoots(unittest.TestCase):
+    def test_negative_discriminant(self):
+        for a, b, c in [(1, 0, 1), (1, 1, 1)]:
+            with self.subTest(a=a, b=b, c=c):
+                self.assertEqual(solve(a, b, c), ("none",))
+
+
 if __name__ == "__main__":
     unittest.main()
