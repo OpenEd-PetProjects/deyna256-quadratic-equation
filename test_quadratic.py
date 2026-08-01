@@ -40,5 +40,18 @@ class TestNoRoots(unittest.TestCase):
                 self.assertEqual(solve(a, b, c), ("none",))
 
 
+class TestDegenerate(unittest.TestCase):
+    def test_a_is_zero(self):
+        cases = [
+            (0, 2, -4, ("linear", 2.0)),
+            (0, -3, 1.5, ("linear", 0.5)),
+            (0, 0, 0, ("inf",)),
+            (0, 0, 5, ("none",)),
+        ]
+        for a, b, c, expected in cases:
+            with self.subTest(a=a, b=b, c=c):
+                self.assertEqual(solve(a, b, c), expected)
+
+
 if __name__ == "__main__":
     unittest.main()

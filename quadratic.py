@@ -9,10 +9,12 @@ def discriminant(a, b, c):
 def solve(a, b, c):
     """Решает a*x^2 + b*x + c = 0, возвращает (kind, *корни).
 
-    Пока не поддержано вырождение a == 0.
+    kind ∈ {"none", "linear", "one", "two", "inf"}.
     """
     if a == 0:
-        raise NotImplementedError("вырожденный случай a == 0")
+        if b != 0:
+            return ("linear", -c / b)
+        return ("inf",) if c == 0 else ("none",)
     d = discriminant(a, b, c)
     if d < 0:
         return ("none",)
